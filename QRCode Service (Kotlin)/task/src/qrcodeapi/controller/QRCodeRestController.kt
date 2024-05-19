@@ -22,15 +22,23 @@ class QRCodeRestController @Autowired constructor(
 
     @GetMapping("/api/qrcode")
     fun getQRCodeImage(
+        @RequestParam("contents") contents: String,
         @RequestParam(value="size", defaultValue = "250") size: Int,
-        @RequestParam(value="type", defaultValue = "png") type: String
+        @RequestParam(value="type", defaultValue = "png") type: String,
     ): ResponseEntity<out Any>? {
+
+        if (contents.trim { it <= ' ' }.isEmpty()) {
+            return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(CustomError("Contents cannot be null or blank"))
+        }
 
         if (size < 150 || size > 350) {
             return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(CustomError("Image size must be between 150 and 350 pixels"))
         }
+
         val mediaType = if (type.trim { it <= ' ' }.equals("png", ignoreCase = true)) {
             MediaType.IMAGE_PNG
         } else if (type.trim { it <= ' ' }.equals("jpeg", ignoreCase = true)) {
@@ -40,11 +48,11 @@ class QRCodeRestController @Autowired constructor(
         } else {
             return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body<Any>(CustomError("Only png, jpeg and gif image types are supported"))
+                .body(CustomError("Only png, jpeg and gif image types are supported"))
         }
 
         val bufferedImage: BufferedImage = qrCodeImageGeneratorService
-            .generateQRCOdeBufferedImage(size, size)
+            .generateQRCOdeBufferedImage(size, size, contents)
         return ResponseEntity
             .ok()
             .contentType(mediaType)

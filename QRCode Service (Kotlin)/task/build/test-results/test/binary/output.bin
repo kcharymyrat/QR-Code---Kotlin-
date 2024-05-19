@@ -9,19 +9,19 @@
 5[0m[0;34m =========|_|==============|___/=/_/_/_/
 7[0m[0;34m :: Spring Boot ::                (v3.0.2)
 [0m[0;34m
-ä[0m[0;34m2024-05-19T14:31:25.247+05:00  INFO 15504 --- [    Test worker] qrcodeapi.ApplicationKt                  : Starting ApplicationKt using Java 17.0.10 with PID 15504 (started by User in D:\JetBrainsWork\QRCode Service (Kotlin)\QRCode Service (Kotlin)\task)
-∫[0m[0;34m2024-05-19T14:31:25.256+05:00  INFO 15504 --- [    Test worker] qrcodeapi.ApplicationKt                  : No active profile set, falling back to 1 default profile: "default"
-£[0m[0;34m2024-05-19T14:31:28.716+05:00  INFO 15504 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-ê[0m[0;34m2024-05-19T14:31:28.745+05:00  INFO 15504 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-¶[0m[0;34m2024-05-19T14:31:28.746+05:00  INFO 15504 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
-©[0m[0;34m2024-05-19T14:31:28.913+05:00  INFO 15504 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-∂[0m[0;34m2024-05-19T14:31:28.918+05:00  INFO 15504 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3535 ms
-´[0m[0;34m2024-05-19T14:31:31.359+05:00  INFO 15504 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
-≤[0m[0;34m2024-05-19T14:31:31.600+05:00  INFO 15504 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-π[0m[0;34m2024-05-19T14:31:31.625+05:00  INFO 15504 --- [    Test worker] qrcodeapi.ApplicationKt                  : Started ApplicationKt in 7.521 seconds (process running for 9.302)
-¨[0;34m2024-05-19T14:31:32.194+05:00  INFO 15504 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-ü[0m[0;34m2024-05-19T14:31:32.196+05:00  INFO 15504 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-ó[0m[0;34m2024-05-19T14:31:32.200+05:00  INFO 15504 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+à[0m[0;34m2024-05-19T14:51:08.912+05:00  INFO 1732 --- [    Test worker] qrcodeapi.ApplicationKt                  : Starting ApplicationKt using Java 17.0.10 with PID 1732 (started by User in D:\JetBrainsWork\QRCode Service (Kotlin)\QRCode Service (Kotlin)\task)
+π[0m[0;34m2024-05-19T14:51:08.920+05:00  INFO 1732 --- [    Test worker] qrcodeapi.ApplicationKt                  : No active profile set, falling back to 1 default profile: "default"
+¢[0m[0;34m2024-05-19T14:51:11.687+05:00  INFO 1732 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+è[0m[0;34m2024-05-19T14:51:11.726+05:00  INFO 1732 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+•[0m[0;34m2024-05-19T14:51:11.728+05:00  INFO 1732 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+®[0m[0;34m2024-05-19T14:51:11.943+05:00  INFO 1732 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+µ[0m[0;34m2024-05-19T14:51:11.948+05:00  INFO 1732 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2926 ms
+™[0m[0;34m2024-05-19T14:51:13.363+05:00  INFO 1732 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+±[0m[0;34m2024-05-19T14:51:13.518+05:00  INFO 1732 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+∑[0m[0;34m2024-05-19T14:51:13.597+05:00  INFO 1732 --- [    Test worker] qrcodeapi.ApplicationKt                  : Started ApplicationKt in 5.374 seconds (process running for 6.88)
+´[0;34m2024-05-19T14:51:14.308+05:00  INFO 1732 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+û[0m[0;34m2024-05-19T14:51:14.311+05:00  INFO 1732 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+ñ[0m[0;34m2024-05-19T14:51:14.314+05:00  INFO 1732 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
 [0m[1;31m
 Start test 2[0m
 [1;31m
@@ -36,3 +36,15 @@
 Start test 7[0m
 [1;31m
 Start test 8[0m
+[1;31m
+Start test 9[0m
+[1;31m
+Start test 10[0m
+[1;31m
+Start test 11[0m
+[1;31m
+Start test 12[0m
+[1;31m
+Start test 13[0m
+[1;31m
+Start test 14[0m

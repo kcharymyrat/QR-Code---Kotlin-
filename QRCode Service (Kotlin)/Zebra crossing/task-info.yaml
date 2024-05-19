@@ -173,6 +173,57 @@ files:
     \        }\n    }\n\n    private String encodeUrl(String param) {\n        return\
     \ URLEncoder.encode(param, StandardCharsets.UTF_8);\n    }\n}\n"
     learner_created: false
+  - name: src/qrcodeapi/services/QRCodeImageGeneratorService.kt
+    visible: true
+    text: |-
+      package qrcodeapi.services
+      
+      import org.springframework.stereotype.Service
+      import java.awt.Color
+      import java.awt.image.BufferedImage
+      
+      @Service
+      class QRCodeImageGeneratorService {
+      
+          fun generateQRCOdeBufferedImage(width:Int, height: Int): BufferedImage {
+              val image = BufferedImage(width, height, BufferedImage.TYPE_INT_RGB)
+              val graphics = image.createGraphics()
+      
+              graphics.color = Color.WHITE
+              graphics.fillRect(0, 0, width, height)
+              return image
+          }
+      }
+    learner_created: true
+  - name: src/qrcodeapi/custom_error/CustomError.kt
+    visible: true
+    text: |
+      package qrcodeapi.custom_error
+      
+      data class CustomError(val error: String)
+    learner_created: true
+  - name: src/qrcodeapi/configs/QRCodeConfigurations.kt
+    visible: true
+    text: |-
+      package qrcodeapi.configs
+      
+      import org.springframework.context.annotation.Bean
+      import org.springframework.context.annotation.Configuration
+      import org.springframework.http.converter.BufferedImageHttpMessageConverter
+      import org.springframework.http.converter.HttpMessageConverter
+      import java.awt.image.BufferedImage
+      
+      @Configuration
+      class QRCodeConfigurations {
+          @Bean
+          fun bufferedImageHttpMessageConverter(): HttpMessageConverter<BufferedImage> {
+              return BufferedImageHttpMessageConverter();
+          }
+      }
+    learner_created: true
 feedback_link: https://hyperskill.org/projects/414/stages/2423/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sun, 19 May 2024 09:51:15 UTC"
 record: -1
