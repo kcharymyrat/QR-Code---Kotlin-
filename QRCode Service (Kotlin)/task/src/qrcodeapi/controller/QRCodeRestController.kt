@@ -1,5 +1,6 @@
 package qrcodeapi.controller
 
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -16,6 +17,13 @@ class QRCodeRestController @Autowired constructor(
     private val qrCodeImageGeneratorService: QRCodeImageGeneratorService
 ) {
 
+    private val errorCorrectionMap: Map<String, ErrorCorrectionLevel> = mapOf(
+        "L" to ErrorCorrectionLevel.L,
+        "M" to ErrorCorrectionLevel.M,
+        "Q" to ErrorCorrectionLevel.Q,
+        "H" to ErrorCorrectionLevel.H
+    )
+
 
     @GetMapping("/api/health")
     fun getHealth() = ResponseEntity("Hello World", HttpStatus.OK);
@@ -24,10 +32,11 @@ class QRCodeRestController @Autowired constructor(
     fun getQRCodeImage(
         @RequestParam("contents") contents: String,
         @RequestParam(value="size", defaultValue = "250") size: Int,
+        @RequestParam(value = "correction", defaultValue = "L") correction: String,
         @RequestParam(value="type", defaultValue = "png") type: String,
-    ): ResponseEntity<out Any>? {
+    ): ResponseEntity<Any>? {
 
-        if (contents.trim { it <= ' ' }.isEmpty()) {
+        if (contents.trim().isEmpty()) {
             return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(CustomError("Contents cannot be null or blank"))
@@ -39,11 +48,18 @@ class QRCodeRestController @Autowired constructor(
                 .body(CustomError("Image size must be between 150 and 350 pixels"))
         }
 
-        val mediaType = if (type.trim { it <= ' ' }.equals("png", ignoreCase = true)) {
+        val corr = correction.trim().uppercase()
+        if (!errorCorrectionMap.containsKey(corr)) {
+            return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(CustomError("Permitted error correction levels are L, M, Q, H"))
+        }
+
+        val mediaType = if (type.trim().equals("png", ignoreCase = true)) {
             MediaType.IMAGE_PNG
-        } else if (type.trim { it <= ' ' }.equals("jpeg", ignoreCase = true)) {
+        } else if (type.trim().equals("jpeg", ignoreCase = true)) {
             MediaType.IMAGE_JPEG
-        } else if (type.trim { it <= ' ' }.equals("gif", ignoreCase = true)) {
+        } else if (type.trim().equals("gif", ignoreCase = true)) {
             MediaType.IMAGE_GIF
         } else {
             return ResponseEntity
@@ -52,7 +68,7 @@ class QRCodeRestController @Autowired constructor(
         }
 
         val bufferedImage: BufferedImage = qrCodeImageGeneratorService
-            .generateQRCOdeBufferedImage(size, size, contents)
+            .generateQRCOdeBufferedImage(size, size, contents, errorCorrectionMap[corr]!!)
         return ResponseEntity
             .ok()
             .contentType(mediaType)

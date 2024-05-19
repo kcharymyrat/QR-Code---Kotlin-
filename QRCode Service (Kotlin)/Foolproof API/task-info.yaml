@@ -185,6 +185,60 @@ files:
     \        }\n    }\n\n    private String encodeUrl(String param) {\n        return\
     \ URLEncoder.encode(param, StandardCharsets.UTF_8);\n    }\n}\n"
     learner_created: false
+  - name: src/qrcodeapi/services/QRCodeImageGeneratorService.kt
+    visible: true
+    text: |-
+      package qrcodeapi.services
+      
+      import org.springframework.stereotype.Service
+      import com.google.zxing.BarcodeFormat
+      import com.google.zxing.client.j2se.MatrixToImageWriter
+      import com.google.zxing.qrcode.QRCodeWriter
+      import java.awt.image.BufferedImage
+      
+      @Service
+      class QRCodeImageGeneratorService {
+      
+          fun generateQRCOdeBufferedImage(
+              width:Int, height: Int, contents : String
+          ): BufferedImage {
+              val writer = QRCodeWriter()
+              val bitMatrix = writer.encode(contents, BarcodeFormat.QR_CODE, width, height)
+      
+              return MatrixToImageWriter.toBufferedImage(bitMatrix)
+          }
+      }
+    learner_created: true
+  - name: src/qrcodeapi/custom_error/CustomError.kt
+    visible: true
+    text: |
+      package qrcodeapi.custom_error
+      
+      data class CustomError(val error: String)
+    learner_created: true
+  - name: src/qrcodeapi/configs/QRCodeConfigurations.kt
+    visible: true
+    text: |-
+      package qrcodeapi.configs
+      
+      import org.springframework.context.annotation.Bean
+      import org.springframework.context.annotation.Configuration
+      import org.springframework.http.converter.BufferedImageHttpMessageConverter
+      import org.springframework.http.converter.HttpMessageConverter
+      import java.awt.image.BufferedImage
+      
+      @Configuration
+      class QRCodeConfigurations {
+          @Bean
+          fun bufferedImageHttpMessageConverter(): HttpMessageConverter<BufferedImage> {
+              return BufferedImageHttpMessageConverter();
+          }
+      }
+    learner_created: true
 feedback_link: https://hyperskill.org/projects/414/stages/2424/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">Hyperskill</a>
+    to continue learning.
+  time: "Sun, 19 May 2024 10:31:18 UTC"
 record: -1
