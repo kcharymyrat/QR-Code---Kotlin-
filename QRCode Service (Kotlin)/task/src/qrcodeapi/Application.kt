@@ -9,3 +9,7 @@ class QRCodeApplication
 fun main(args: Array<String>) {
     runApplication<QRCodeApplication>(*args)
 }
+
+
+
+
